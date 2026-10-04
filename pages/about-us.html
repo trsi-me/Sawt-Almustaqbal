@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - صوت المستقبل</title>
+    <link rel="icon" type="image/png" href="../assets/images/Logo.PNG">
+    <link rel="stylesheet" href="../assets/css/style.css?v=1">
+    <style>
+        :root {
+            --accent-orange: #FF8C42;
+            --accent-sky-blue: #87CEEB;
+            --accent-purple: #B19CD9;
+            --accent-yellow: #FFE66D;
+            --accent-pink: #FFB6C1;
+        }
+
+        .about-hero {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: transparent;
+            border-radius: 0;
+            margin-bottom: 3rem;
+            box-shadow: none;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--text-primary);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .vision-card,
+        .mission-card {
+            background-color: transparent;
+            border-radius: 0;
+            padding: 2rem;
+            border: none;
+            box-shadow: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+        }
+
+        .vision-card::before,
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+            transition: width 0.3s ease;
+        }
+
+        .vision-card:hover::before,
+        .mission-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .vision-card:hover,
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-hover);
+            border-color: var(--accent-1);
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-sky-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .vision-card:hover .icon-wrapper,
+        .mission-card:hover .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .goal-card {
+            background-color: transparent;
+            border-radius: 0;
+            padding: 2rem;
+            border: none;
+            box-shadow: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .goal-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .goal-card:hover .goal-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .goal-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .goal-card p {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .team-section {
+            background-color: transparent;
+            border-radius: 0;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border: none;
+            box-shadow: none;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: transparent;
+            border-radius: 0;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-sky-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            font-weight: bold;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .member-avatar {
+            transform: scale(1.1);
+        }
+
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+
+            .vision-mission-grid,
+            .goals-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="../assets/images/Logo2.PNG" alt="صوت المستقبل">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="القائمة">☰</button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">الرئيسية</a></li>
+                <li><a href="about-us.html">من نحن</a></li>
+                <li><a href="become-journalist.html">كيف أكون إعلامي صغير</a></li>
+                <li><a href="games.html">الألعاب والمسابقات</a></li>
+                <li><a href="archive.html">ذاكرة الإعلام</a></li>
+                <li><a href="activities.html">المشاركات والفعاليات</a></li>
+                <li><a href="our-articles.html">من قلمنا</a></li>
+                <li><a href="editorial-design.html">كل ما تحتاج معرفته عن الإخراج الصحفي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <h1 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-primary);">من نحن</h1>
+            <p>
+                في صوت المستقبل نؤمن أن لكل طفل صوت يستحق أن يُسمع، وأن الإعلام ليس مجرد أخبار.. بل وسيلة للتعبير،
+                والإبداع، والتأثير.
+            </p>
+            <p>
+                نعلّم أطفال اليوم كيف يفهمون ما يشاهدونه ويقرأونه، ويميزون بين الحقيقة والمعلومة المضللة.
+            </p>
+            <p>
+                نعرّفهم بأساسيات الإعلام، ونساعدهم يعبّرون عن آرائهم بثقة واحترام.
+            </p>
+            <p>
+                ونغرس فيهم حبّ التفكير النقدي والوعي الرقمي، ليكونوا جزءًا من جيلٍ يعرف كيف يصنع محتواه بنفسه.
+            </p>
+            <p>
+                من خلال برامجنا ومبادراتنا، نشارك في تحقيق رؤية المملكة 2030 بتمكين الشباب وإبراز طاقاتهم في مجالات
+                المعرفة والإبداع.
+            </p>
+            <p style="font-weight: 600; margin-top: 1.5rem;">
+                ففي صوت المستقبل.. نُصغي لصوت الجيل القادم.
+            </p>
+        </section>
+
+        <section class="vision-mission-grid">
+            <div class="vision-card">
+                <div class="icon-wrapper"
+                    style="font-size: 2.5rem; font-weight: normal; line-height: 1; color: var(--text-primary);">◉</div>
+                <h2 style="text-align: center; color: var(--text-primary); margin-bottom: 1rem;">رؤيتنا</h2>
+                <p style="text-align: center; color: var(--text-primary); line-height: 1.8; font-size: 1.1rem;">
+                    نطمح إلى بناء جيل إعلامي واعٍ ومسؤول يفهم دوره في صناعة المستقبل.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>أهدافنا</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon"
+                        style="font-size: 2rem; font-weight: normal; line-height: 1; color: var(--text-primary);">⦿
+                    </div>
+                    <h3>تنمية الوعي الإعلامي</h3>
+                    <p>
+                        تنمية الوعي الإعلامي لدى الأطفال من خلال تعريفهم بأساسيات الإعلام وأدواته بطريقة تفاعلية تعزز
+                        قدرتهم على التمييز بين المحتوى الهادف والمضلل.
+                    </p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"
+                        style="font-size: 2rem; font-weight: normal; line-height: 1; color: var(--text-primary);">✎
+                    </div>
+                    <h3>تطوير المهارات</h3>
+                    <p>
+                        تطوير مهارات التعبير والتواصل لدى الأطفال عبر تدريبهم على الكتابة والإلقاء وإنتاج المحتوى
+                        الإعلامي بطريقة إبداعية ومسؤولة.
+                    </p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon"
+                        style="font-size: 2rem; font-weight: normal; line-height: 1; color: var(--text-primary);">✦
+                    </div>
+                    <h3>غرس القيم</h3>
+                    <p>
+                        غرس القيم الإيجابية والانتماء الوطني من خلال محتوى يُسهم في بناء شخصية الطفل المتوازنة ويعزز
+                        ارتباطه بلغته العربية وهويته الثقافية.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 style="text-align: center; color: var(--text-primary); margin-bottom: 1rem;">فريقنا</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">ن</div>
+                    <div class="member-name">نجد نمر</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">س</div>
+                    <div class="member-name">سارة العوفي</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">م</div>
+                    <div class="member-name">مها الدويش</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">ر</div>
+                    <div class="member-name">ريناد الرباح</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">ن</div>
+                    <div class="member-name">د.نوال المنيف</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>دليل الهوية</h2>
+
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">الفكرة العامة</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    هوية مشرقة، تعليمية، مستوحاة من عالم الإعلام، تُقدِّم للطفل تجربة تفاعلية تجمع بين المعرفة والإبداع.
+                </p>
+                <p style="line-height: 1.8;">
+                    تركز الهوية على تمكين الطفل من التعبير وتنمية وعيه الإعلامي بأسلوب ممتع وواضح.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">الألوان الأساسية</h3>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                    <div
+                        style="padding: 1rem; background-color: var(--accent-orange); border-radius: 8px; color: white; text-align: center;">
+                        <strong>البرتقالي</strong><br>
+                        <span style="font-size: 0.875rem;">اللون الرئيسي - يرمز للطاقة والتعبير والإبداع</span>
+                    </div>
+                    <div
+                        style="padding: 1rem; background-color: var(--accent-sky-blue); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                        <strong>الأزرق السماوي</strong><br>
+                        <span style="font-size: 0.875rem;">يوازن التصميم ويمنح إحساسًا بالهدوء والثقة</span>
+                    </div>
+                    <div
+                        style="padding: 1rem; background-color: var(--accent-purple); border-radius: 8px; color: white; text-align: center;">
+                        <strong>البنفسجي الفاتح</strong><br>
+                        <span style="font-size: 0.875rem;">يعبّر عن الخيال والإلهام والتفكير الإبداعي</span>
+                    </div>
+                    <div
+                        style="padding: 1rem; background-color: var(--accent-yellow); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                        <strong>الأصفر الفاتح</strong><br>
+                        <span style="font-size: 0.875rem;">يضيف لمسة تفاؤل وفضول واكتشاف</span>
+                    </div>
+                    <div
+                        style="padding: 1rem; background-color: var(--accent-pink); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                        <strong>الوردي الباهت</strong><br>
+                        <span style="font-size: 0.875rem;">يضفي دفئًا وودًّا ويجعل التجربة لطيفة ومريحة</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; line-height: 1.8; font-weight: 600; color: var(--text-primary);">
+                    النتيجة: هوية تجمع بين المرح والتعليم بروح إعلامية مشرقة ومناسبة لليافعين
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">الخط المستخدم</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    <strong>Sf-mada</strong>
+                </p>
+                <p style="line-height: 1.8;">
+                    الهدف: موازنة الجدية التعليمية مع الطابع الطفولي المرح.
+                </p>
+            </div>
+
+            <div>
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">الرموز والأيقونات</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    اعتماد أسلوب Flat Illustrations مشابه لما في الشعار:
+                </p>
+                <ul style="list-style: none; padding-right: 0;">
+                    <li style="margin-bottom: 0.5rem; padding-right: 1.5rem; position: relative;">
+                        <span style="position: absolute; right: 0;">🎤</span>
+                        <span style="margin-right: 1.5rem;">ميكروفون</span>
+                    </li>
+                    <li style="margin-bottom: 0.5rem; padding-right: 1.5rem; position: relative;">
+                        <span style="position: absolute; right: 0;">📷</span>
+                        <span style="margin-right: 1.5rem;">كاميرا</span>
+                    </li>
+                    <li style="margin-bottom: 0.5rem; padding-right: 1.5rem; position: relative;">
+                        <span style="position: absolute; right: 0;">📖</span>
+                        <span style="margin-right: 1.5rem;">كتاب</span>
+                    </li>
+                    <li style="margin-bottom: 0.5rem; padding-right: 1.5rem; position: relative;">
+                        <span style="position: absolute; right: 0;">🎨</span>
+                        <span style="margin-right: 1.5rem;">لوحة</span>
+                    </li>
+                    <li style="margin-bottom: 0.5rem; padding-right: 1.5rem; position: relative;">
+                        <span style="position: absolute; right: 0;">🎵</span>
+                        <span style="margin-right: 1.5rem;">موسيقى</span>
+                    </li>
+                </ul>
+                <p style="line-height: 1.8; margin-top: 1rem;">
+                    تصميمها بأسلوب مبسط وبألوان متناسقة مع الدائرة المكوّنة في الشعار. يمكن إنشاء "أيقونات مخصصة" بنفس
+                    النمط لتوحيد الهوية عبر الموقع.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 صوت المستقبل - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="../assets/js/main.js?v=1"></script>
+</body>
+
+</html>
